@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的網頁按鈕</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 從頂部開始排列元素 */
+            padding-top: 50px; /* 與頂部的距離 */
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #db5454;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #db5454;
+        }
+    
+        /* 新增的CSS樣式為圖片 */
+        img {
+            /* 圖片最大寬度100%，以適應螢幕 */
+            max-width: 20%;
+            height: auto;
+            margin-top: 20px; /* 與按鈕之間的間隔 */
+        }
+    
+        .calculator {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            grid-gap: 10px;
+        }
+        .calculator input[type="text"] {
+            grid-column: span 4;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .calculator input[type="button"] {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://sites.google.com/view/kiiibao/" class="button">我的網頁</a>
+    <!-- 新增的GIF圖片，替換src為你的GIF圖片地址 -->
+    <img src="https://i.pinimg.com/originals/5f/14/95/5f1495f1ad8c2e3ea9cccf195133ad5c.gif" alt="描述性文字">
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <input type="button" value="1" onclick="appendToDisplay('1')">
+        <input type="button" value="2" onclick="appendToDisplay('2')">
+        <input type="button" value="3" onclick="appendToDisplay('3')">
+        <input type="button" value="/" onclick="appendToDisplay('/')">
+        <input type="button" value="4" onclick="appendToDisplay('4')">
+        <input type="button" value="5" onclick="appendToDisplay('5')">
+        <input type="button" value="6" onclick="appendToDisplay('6')">
+        <input type="button" value="*" onclick="appendToDisplay('*')">
+        <input type="button" value="7" onclick="appendToDisplay('7')">
+        <input type="button" value="8" onclick="appendToDisplay('8')">
+        <input type="button" value="9" onclick="appendToDisplay('9')">
+        <input type="button" value="-" onclick="appendToDisplay('-')">
+        <input type="button" value="C" onclick="clearDisplay()">
+        <input type="button" value="0" onclick="appendToDisplay('0')">
+        <input type="button" value="=" onclick="calculateResult()">
+        <input type="button" value="+" onclick="appendToDisplay('+')">
+    </div>
+    
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('result').value += value;
+        }
+    
+        function clearDisplay() {
+            document.getElementById('result').value = '';
+        }
+    
+        function calculateResult() {
+            try {
+                document.getElementById('result').value = eval(document.getElementById('result').value);
+            } catch (e) {
+                document.getElementById('result').value = '錯誤';
+            }
+        }
+    </script>
+
+</body>
+</html>
